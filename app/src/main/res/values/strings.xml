@@ -2,6 +2,7 @@
     <string name="app_name">GeoQuiz</string>
     <string name="true_button">true</string>
     <string name="false_button">false</string>
+    <string name="pre_button">pre</string>
     <string name="next_button">NEXT</string>
     <string name="correct_toast">CORRECT!</string>
     <string name="incorrect_toast">FALSE!</string>
