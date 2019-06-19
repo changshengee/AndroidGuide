@@ -16,10 +16,13 @@ public class QuizActivity extends AppCompatActivity {
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
+    private Button mCheatButton;
     private TextView mQuestionTextView;
     private int currentIndex = 0;
 
     public static final String TAG = "QuizActivity";
+    public static final String KEY_INDEX = "index";
+
 
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_oceans, true),
@@ -37,7 +40,11 @@ public class QuizActivity extends AppCompatActivity {
         mTrueButton = findViewById(R.id.true_button);
         mFalseButton = findViewById(R.id.false_button);
         mNextButton = findViewById(R.id.next_button);
+        mCheatButton = findViewById(R.id.cheat_button);
         mQuestionTextView = findViewById(R.id.question_text_view);
+        if (savedInstanceState != null) {
+            currentIndex = savedInstanceState.getInt(KEY_INDEX);
+        }
         updateQuestion();
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +66,13 @@ public class QuizActivity extends AppCompatActivity {
                         updateQuestion();
                     }
                 });
+        mCheatButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                System.out.println("Start Cheat!");
+            }
+        });
         mQuestionTextView.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -67,6 +81,14 @@ public class QuizActivity extends AppCompatActivity {
                         updateQuestion();
                     }
                 });
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d(TAG, "onSaveInstanceState() called");
+        outState.putInt(KEY_INDEX, currentIndex);
+
     }
 
     @Override
