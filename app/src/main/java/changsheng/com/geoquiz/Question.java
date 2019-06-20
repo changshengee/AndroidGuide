@@ -14,6 +14,11 @@ public class Question {
      */
     private boolean mAnswerTrue;
 
+    /**
+     * 是否作弊过
+     */
+    private boolean mIsCheated = false;
+
     public Question(int mTextResId, boolean mAnswerTrue) {
         this.mTextResId = mTextResId;
         this.mAnswerTrue = mAnswerTrue;
@@ -34,4 +39,13 @@ public class Question {
     public void setAnswerTrue(boolean answerTrue) {
         mAnswerTrue = answerTrue;
     }
+
+    public boolean isCheated() {
+        return mIsCheated;
+    }
+
+    public void setCheated(boolean cheated) {
+        mIsCheated = cheated;
+    }
+
 }
